@@ -1,0 +1,223 @@
+canvas {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  z-index: -1;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    padding: 20px 40px;
+    border-radius: 8px; /* Slightly increased border-radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Added subtle shadow */
+    background-color: rgba(247, 247, 242, 0.8); 
+    color: rgb(46, 41, 78);
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Better readability */
+}
+
+.container a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+.form-control {
+    position: relative;
+    margin: 20px 0 40px;
+    width: 300px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 30px;
+        max-width: 90%;
+    }
+
+    .form-control {
+        width: 80%;
+    }
+
+    .btn,
+    .choose-file {
+        font-size: 18px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        justify-content: flex-start;
+        height: auto;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    canvas {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .container {
+        padding: 15px 20px;
+        max-width: 100%;
+        box-shadow: none; /* Optional: Remove shadow for simpler mobile view */
+        border-radius: 5px;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .form-control input,
+    .form-control select {
+        font-size: 16px;
+        padding: 10px 0;
+    }
+
+    .btn,
+    .choose-file {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .text {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+}
+
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #070000;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #222725;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    transition: border-bottom-color 0.3s ease; /* Smooth transition for focus */
+}
+
+.form-control input:focus,
+.form-control input:valid {
+    outline: 0;
+    border-bottom-color: lightblue;
+}
+
+.form-control select {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #121113;
+    border-radius: 5px; /* Adjusted */
+    padding: 5px;
+    border: 1px solid #ccc;
+    font-family: monospace;
+    transition: border-color 0.3s ease;
+}
+
+.form-control select:focus,
+.form-control select:valid {
+    border-color: lightblue;
+}
+
+select option {
+    background-color: #899878;
+    color: #121113; /* Ensures text is visible */
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+.btn,
+.choose-file {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background-color: rgb(137, 152, 120);
+    color: rgb(34, 39, 37); /* Ensures the text is visible */
+    padding: 15px;
+    font-family: inherit;
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.btn:focus,
+.choose-file:focus {
+    outline: 0;
+}
+
+.btn:active,
+.choose-file:active {
+    transform: scale(0.98);
+}
+
+.text {
+    margin-top: 30px;
+}
+
+.form-control label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none; /* Prevents interference */
+}
+
+.form-control label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+    color: rgb(18, 17, 19);
+    transform: translateY(-30px);
+}
+
+.content {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.content.show {
+    opacity: 1;
+    transform: translateY(0);
+}

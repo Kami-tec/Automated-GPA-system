@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Website Animation By Mashfiqur</title>
+    <link rel="stylesheet" href="form-style.css">
+  </head>
+  <body>
+      <canvas id=c></canvas>
+        <div class="container">
+          <h1>Select the resultsheet</h1>
+          <form action="../backEnd/fileUpload.php" method="post" enctype="multipart/form-data" >
+            <div class="form-control">
+                <select id="combo1" onchange="updateCombo2()" title="Department" name="dept">
+                    <option value=""> Select department </option>
+                    <option value="BTC">BTC</option>
+                    <option value="ETC">ETC</option>
+                    <option value="ITC">ITC</option>
+                </select>
+            </div>
+
+            <div class="form-control">
+                
+                <select id="batch" name="batch" title="Batch">
+                    <option value="">Select academic year</option>
+                    <option value="19"> 2019 </option>
+                    <option value="20"> 2020 </option>
+                    <option value="21"> 2021 </option>
+                    <option value="22"> 2022 </option>
+                    <option value="23"> 2023 </option>
+                    <option value="24"> 2024 </option>
+                </select>
+                
+            </div>
+
+            <div class="form-control">
+                
+                <input type="number" placeholder="Credits" name="credits" id="credits" required min="1" max="4">
+                <!-- <label>Credits</label> -->
+                
+            </div>
+            
+            
+            <div class="form-control">
+                <h2 style="font-family: monospace;">Select file to upload</h2>
+                <input class="choose-file" type="file" name="file" title="resultsheet" accept="application/pdf" required>
+            
+            
+            </div>
+            <input class="btn" type="submit" value="Upload file" name="file" />
+          </form>
+        </div>
+      <script>
+        function validateInput() {
+            const input = document.querySelector('input[name="uname"]').value;
+            const pattern = /^(ICT|EGT|BST)\/[0-9]{2}\/[0-9]{3}$/;
+
+            if (!pattern.test(input)) {
+                alert("Please enter a valid index in the format ICT/XX/XXX, EGT/XX/XXX, or BST/XX/XXX (e.g., ICT/21/940). Please use uppercase batch IDs.");
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+      </script>
+      <script src="myscripts.js"></script>
+      <script src="script.js"></script>
+  </body>
+</html>

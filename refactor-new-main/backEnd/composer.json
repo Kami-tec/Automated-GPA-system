@@ -1,0 +1,17 @@
+{
+    "name": "bhanu/back-end",
+    "autoload": {
+        "psr-4": {
+            "Bhanu\\BackEnd\\": "src/"
+        }
+    },
+    "require": {
+        "spatie/pdf-to-text": "^1.52",
+        "smalot/pdfparser": "^2.10"
+    },
+    "require-dev": {
+        "codeception/codeception": "^5.1",
+        "codeception/module-asserts": "*",
+        "phpunit/php-token-stream": "^4.0"
+    }
+}
